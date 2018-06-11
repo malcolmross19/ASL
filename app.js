@@ -3,9 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var expressValidator = require('express-validator');
+var expressSession = require('express-session');
+
+const { body,validationResult } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
 
 var indexRouter = require('./routes/index');
-var formRouter = require('./routes/form');
+
 
 var app = express();
 
@@ -16,11 +21,13 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(expressSession({secret: 'max', saveUnitialized: false, resave: false}));
 
 app.use('/', indexRouter);
-app.use('/registerForm', formRouter);
+//app.use('/registerForm', formRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

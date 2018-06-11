@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .row
+  .col-md-8
+    #wrapper
+      #container
+        | Your application is ready. Here is your form.
+        form(name='form', method='post', action='/registerForm', enctype='multipart/form-data')
+          div
+            label.required(for='form_name') Name
+            input#form_name(type='text', name='form[name]', required='required')
+          div
+            label.required(for='form_email') Email
+            input#form_email(type='text', name='form[email]', required='required')
+          div
+            label.required(for='form_myfile') Myfile
+            input#form_myfile(type='file', name='form[myfile]', required='required')
+          div
+            button#form_save(type='submit', name='form[save]') Save
+          input#form__token(type='hidden', name='form[_token]', value='OOXDbhFRObD5tNYcpQEBFD_lV4FkWCkeLBDsbvFs2jY')

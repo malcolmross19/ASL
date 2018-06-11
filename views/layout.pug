@@ -6,7 +6,18 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/stylesheets/tether.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/jquery-3.3.1.min.js')
+    script(src='/javascripts/bootstrap.min.js')
   body
-    block content
-  script(src='/javascripts/jquery-3.3.1.min.js')
-  script(src='/javascripts/bootstrap.min.js')
+      nav.navbar.navbar-inverse.fixed-top(role="navigation")
+        .container
+          .navbar-header
+            each item in navitems
+              <span> | </span>
+              a(class=title==item.content?'active':undefined href=item.link)
+                =item.content
+
+      div.page-header
+      h1
+      =title
+  block content

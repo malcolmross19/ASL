@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  div.container
+    form(method="post", action="/addUser")
+      table
+        tr
+          th First Name
+          td
+            input(type="text", name="firstname")
+        tr
+          th Last Name
+          td
+            input(type="text", name="lastname")
+        tr
+          th Email
+          td
+            input(type="text", name="email")
+        tr
+          th &nbsp;
+          td
+            input(type="submit", value="Save")

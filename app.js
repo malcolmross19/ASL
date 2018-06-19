@@ -11,8 +11,20 @@ const { sanitizeBody } = require('express-validator/filter');
 
 var indexRouter = require('./routes/index');
 
-
 var app = express();
+
+var connection = require('express-myconnection');
+var mysql = require('mysql');
+
+app.use(
+  connection(mysql, {
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    port: '8889',
+    database: 'fruits'
+  }, 'request')
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <a href="/addForm">Add User</a>
+
+            {% if users %}
+            <ul>
+              {% for user in users %}
+                  <li>{{ user.name|e }} {{user.lastname|e}} <a href="/gUser/{{user.id}}">Edit</a> | <a href="/deleteUser/{{user.id}}"</li>
+              {% end for %}
+            </ul>
+            {% end if %}
+        </div>
+    </div>
+{% endblock %}

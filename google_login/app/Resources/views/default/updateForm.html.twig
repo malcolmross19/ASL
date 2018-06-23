@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <a href="/addForm">Add User</a>
+
+            {% if users %}
+            <form action="/updateUser/{{users[0]["id"]}} method="post">
+              <label>First Name</label>
+              <input type="text" name="name" value="{{users[0]["name"]}}" />
+              <label>Last Name</label>
+              <input type="text" name="lastname" value="{{users[0]["lastname"]}}" />
+              <label>Email</label>
+              <input type="text" name="email" value="{{users[0]["email"]}}" />
+              <input type="submit">
+            </form>
+            {% else %}
+            Can't find this user.
+            {% end if %}
+
+        </div>
+    </div>
+{% endblock %}
